@@ -22,6 +22,7 @@ const NavBar = () => {
           <li>Welcome, {user.username}</li>
           {/* The new link */}
           <li><Link to='/'>Dashboard</Link></li>
+          <li><Link to='/moods'>Moods</Link></li>
           <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
         </ul>
       ) : (
