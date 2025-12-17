@@ -15,7 +15,15 @@ import { UserContext } from './contexts/UserContext';
 
 const App = () => {
   const { user } = useContext(UserContext);
-  const [mood, setMoods] = useState([]);
+  const [moods, setMoods] = useState([]);
+
+  useEffect(() => {
+    const fetchAllMoods = async () => {
+      const moodsData = await moodService.index();
+      setMoods(moodsData);
+    }
+    if (user) fetchAllMoods();
+  }, [user]);
   return (
     <>
       <NavBar />
@@ -23,7 +31,7 @@ const App = () => {
         <Route path='/' element={user ? <Dashboard /> : <Landing />} />
         {user ? (
           <>
-          <Route path='/moods' element={<MoodList />} />
+          <Route path='/moods' element={<MoodList moods={moods}/>} />
           </>
         ) : (
           <>
