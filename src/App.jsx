@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { UserContext } from './contexts/UserContext';
 import NavBar from './components/NavBar/NavBar';
-
-import Dashboard from './components/Dashboard/Dashboard.jsx';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
+
+import Dashboard from './components/Dashboard/Dashboard.jsx';
 import Landing from './components/Landing/Landing';
+
+import { UserContext } from './contexts/UserContext';
 
 const App = () => {
   const { user } = useContext(UserContext);
