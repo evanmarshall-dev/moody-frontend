@@ -13,7 +13,7 @@ const index = async () => {
 
 const show = async (moodId) => {
   try {
-      const res = await fetch(`${BASE_URL}/${moodIdId}`, {
+      const res = await fetch(`${BASE_URL}/${moodId}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       return res.json();
