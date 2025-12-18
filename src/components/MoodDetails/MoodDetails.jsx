@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import * as moodService from '../../services/moodService';
+import { Link } from "react-router-dom";
 
 
 const MoodDetails = () => {
@@ -28,6 +29,10 @@ const MoodDetails = () => {
         </header>
         <p>{mood.intensity}</p>
         <p>{mood.description}</p>
+        
+        <Link to={`/moods/${moodId}/edit`}>
+          <button>Edit Mood</button>
+        </Link>
         <p>
           {`${mood.author.username} posted on
           ${new Date(mood.dateRecorded).toLocaleDateString()}`}
