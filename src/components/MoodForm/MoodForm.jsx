@@ -10,9 +10,10 @@ const MoodForm = ({ mood, onSubmit, onCancel, isLoading }) => {
   });
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: name === "intensity" ? Number(value) : value,
     });
   };
 
@@ -63,7 +64,7 @@ const MoodForm = ({ mood, onSubmit, onCancel, isLoading }) => {
             *
           </span>
           <output htmlFor="intensity" className="intensity-value">
-            {intensity}
+            {formData.intensity}
           </output>
         </label>
         <input
@@ -72,8 +73,8 @@ const MoodForm = ({ mood, onSubmit, onCancel, isLoading }) => {
           name="intensity"
           min="1"
           max="10"
-          value={intensity}
-          onChange={(e) => setIntensity(Number(e.target.value))}
+          value={formData.intensity}
+          onChange={handleChange}
           className={styles.formRange}
           required
           aria-describedby="intensity-help"
@@ -106,14 +107,14 @@ const MoodForm = ({ mood, onSubmit, onCancel, isLoading }) => {
       </div>
 
       <div className={styles.formActions}>
-        <Button
+        <button
           type="button"
-          variant="secondary"
+          className={styles.cancelButton}
           onClick={onCancel}
           disabled={isLoading}
         >
           Cancel
-        </Button>
+        </button>
         <button
           type="submit"
           className={styles.submitButton}
