@@ -1,15 +1,17 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { UserContext } from "../../contexts/UserContext";
 import styles from "./NavBar.module.scss";
 
 const NavBar = () => {
   const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     localStorage.removeItem("token");
     setUser(null);
+    navigate("/");
   };
 
   return (
@@ -33,13 +35,15 @@ const NavBar = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/sign-in">Sign In</Link>
-          </li>
-          <li>
             <Link to="/sign-up">Sign Up</Link>
           </li>
         </ul>
       )}
+      <div className={styles.logo}>
+        <Link to={user ? "/moods" : "/"}>
+          <img src="/src/assets/images/Moody_logo.png" alt="Moody Logo" />
+        </Link>
+      </div>
     </nav>
   );
 };

@@ -1,0 +1,183 @@
+.landing {
+display: flex;
+  flex-direction: row;          /* make children sit side by side */
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.welcome {
+ flex: 1;
+  padding: 20px;
+
+  margin-right: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.welcome h1 {
+  font-size: 3rem;
+  color: var(--color-accent-warm);
+  margin-bottom: var(--spacing-md);
+}
+
+.welcome p {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+}
+
+.formContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.formContainer.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.initialActions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.initialActions.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.signInForm {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: var(--color-bg-primary);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  position: absolute;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  pointer-events: none;
+}
+
+.signInForm.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.formContainer input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  margin: var(--spacing-xs) 0 var(--spacing-sm) 0;
+}
+
+.formContainer div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer label {
+  font-weight: 500;
+  color: var(--color-text-primary);
+  font-size: 0.95rem;
+  margin: var(--spacing-xs) 0 var(--spacing-sm) 0;
+}
+
+.formContainer button {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: var(--font-primary);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: none;
+  background-color: var(--color-accent-warm);
+  color: var(--color-bg-primary);
+  margin-top: var(--spacing-md);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-accent-warm-dark);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.buttonContainer {
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.secondary {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-text-secondary);
+  }
+}
+
+.formContainer a {
+  border: none;
+  font-size: 14px;
+  background: none;
+  font-weight: 500;
+  margin-top: 14px;
+  text-align: center;
+  color: var(--color-accent-warm);
+  cursor: pointer;
+  display: inline;
+}
+
+.formContainer p {
+  margin: 0;
+  padding: 0px 0 10px;
+}
+
+.formContainer input:focus {
+  outline: none;
+  border-color: var(--color-accent-warm);
+  box-shadow: 0 0 0 3px rgba(212, 149, 92, 0.1);
+}
+
+@media only screen and (max-width: 912px) {
+  .welcome, .formContainer {
+    width: 100%;
+  }
+  .welcome {
+    display: none;
+  }
+  .formContainer form {
+    min-width: 100%;
+  }
+}
+
+@media only screen and (max-height: 900px) {
+  .formContainer {
+    justify-content: flex-start;
+  }
+}
