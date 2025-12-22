@@ -88,12 +88,13 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  min-width: 320px;
+  background-image: url("/src/assets/images/Moody_background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   min-height: 100vh;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
+  margin: 0;
 }
 
 /* ========================================

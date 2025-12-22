@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import styles from "./MoodList.module.scss";
 import { UserContext } from "../../contexts/UserContext";
 import * as moodService from "../../services/moodService";
 
@@ -29,7 +30,16 @@ const MoodList = () => {
       </header>
 
       {!Array.isArray(moods) || moods.length === 0 ? (
-        <p>No moods yet. Create your first mood!</p>
+        <div className={styles.emptyState}>
+          <h2>It's a little quiet in here...</h2>
+          <p>
+            Start tracking your emotions to see your mood history and discover
+            valuable insights.
+          </p>
+          <Link to="/new-mood" className={styles.callToAction}>
+            Create Your First Mood
+          </Link>
+        </div>
       ) : (
         moods.map((mood) => (
           <Link key={mood._id} to={`/moods/${mood._id}`}>
