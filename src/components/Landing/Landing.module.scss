@@ -8,10 +8,12 @@ display: flex;
 .welcome {
  flex: 1;
   padding: var(--spacing-lg);
-
   margin-right: var(--spacing-lg);
   text-align: center;
   position: relative;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
 .welcome h1 {
@@ -31,6 +33,9 @@ display: flex;
   flex-direction: column;
   align-items: center;
   padding: var(--spacing-lg);
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
 .formContainer.hidden {
