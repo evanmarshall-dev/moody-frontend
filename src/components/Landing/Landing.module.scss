@@ -7,9 +7,9 @@ display: flex;
 
 .welcome {
  flex: 1;
-  padding: 20px;
+  padding: var(--spacing-lg);
 
-  margin-right: 20px;
+  margin-right: var(--spacing-lg);
   text-align: center;
   position: relative;
 }
@@ -30,7 +30,7 @@ display: flex;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: var(--spacing-lg);
 }
 
 .formContainer.hidden {
@@ -80,8 +80,6 @@ display: flex;
   border-radius: var(--border-radius-md);
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
-  font-size: 1rem;
-  font-family: var(--font-primary);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
   margin: var(--spacing-xs) 0 var(--spacing-sm) 0;
 }
@@ -102,9 +100,7 @@ display: flex;
 .formContainer button {
   width: 100%;
   padding: var(--spacing-sm) var(--spacing-lg);
-  font-size: 1rem;
   font-weight: 500;
-  font-family: var(--font-primary);
   border-radius: var(--border-radius-md);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -143,7 +139,7 @@ display: flex;
 
 .formContainer a {
   border: none;
-  font-size: 14px;
+  font-size: 0.875rem;
   background: none;
   font-weight: 500;
   margin-top: 14px;

@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 4rem 2rem;
+  padding: var(--spacing-2xl) var(--spacing-lg);
 
   h2 {
     margin-bottom: var(--spacing-sm);
@@ -20,7 +20,6 @@
 
 .callToAction {
   padding: var(--spacing-sm) var(--spacing-lg);
-  font-size: 1rem;
   font-weight: 500;
   border-radius: var(--border-radius-md);
   cursor: pointer;
