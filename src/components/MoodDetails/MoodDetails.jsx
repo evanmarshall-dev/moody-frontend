@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { useState, useEffect } from "react";
 import * as moodService from '../../services/moodService';
 import { Link } from "react-router-dom";
+import styles from './MoodDetails.module.scss'
 
 
 const MoodDetails = () => {
@@ -20,14 +21,14 @@ const MoodDetails = () => {
 
   if (!mood) return <main>Loading...</main>
   return (
-    <main>
+    <main className={styles.container}>
       <section>
         <header>
           <h1>{mood.title}</h1>
-          <h2>{mood.category}</h2>
+          <h2>Mood: {mood.category}</h2>
 
         </header>
-        <p>{mood.intensity}</p>
+        <p>Intenisty: {mood.intensity}</p>
         <p>{mood.description}</p>
         
         <Link to={`/moods/${moodId}/edit`}>

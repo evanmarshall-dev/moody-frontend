@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "./MoodList.module.scss";
 import { UserContext } from "../../contexts/UserContext";
 import * as moodService from "../../services/moodService";
+import styles from './MoodList.module.scss';
 
 const MoodList = () => {
   const [moods, setMoods] = useState([]);
@@ -21,12 +22,11 @@ const MoodList = () => {
     fetchMoods();
   }, []);
 
-  return (
-    <main>
-      <header>
-        {/* <h1>Welcome, {user?.username}</h1> */}
+   return (
+    <main className={styles.container}>
+      <header className={styles.header}>
         <h1>Your moods, in one place.</h1>
-        <hr style={{ marginBottom: "2rem" }} />
+        <hr />
       </header>
 
       {!Array.isArray(moods) || moods.length === 0 ? (
@@ -41,23 +41,34 @@ const MoodList = () => {
           </Link>
         </div>
       ) : (
-        moods.map((mood) => (
-          <Link key={mood._id} to={`/moods/${mood._id}`}>
-            <article>
-              <header>
-                <h2>{mood.title}</h2>
-                <h3>{mood.category}</h3>
-                <h3>Mood Intensity: {mood.intensity}</h3>
-              </header>
-              <p>{mood.description}</p>
-              <p>
-                {`${mood.author.username} posted on ${new Date(
-                  mood.dateRecorded
-                ).toLocaleDateString()}`}
-              </p>
-            </article>
-          </Link>
-        ))
+        <section className={styles.grid}>
+          {moods.map((mood) => (
+            <Link
+              key={mood._id}
+              to={`/moods/${mood._id}`}
+              className={styles.cardLink}
+            >
+              <article className={styles.card}>
+                <header className={styles.cardHeader}>
+                  <h2>{mood.title}</h2>
+                  <span className={styles.category}>{mood.category}</span>
+                </header>
+
+                <p className={styles.description}>
+                  {mood.description || "No description provided."}
+                </p>
+
+                <footer className={styles.cardFooter}>
+                  <span>Intensity: {mood.intensity}</span>
+                  <small>
+                    {mood.author.username} •{" "}
+                    {new Date(mood.dateRecorded).toLocaleDateString()}
+                  </small>
+                </footer>
+              </article>
+            </Link>
+          ))}
+        </section>
       )}
     </main>
   );
